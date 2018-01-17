@@ -1,0 +1,58 @@
+Arguments: 
+  /usr/local/bin/node /Users/abdallahkanso/.npm-packages/bin/yarn install
+
+PATH: 
+  /Users/abdallahkanso/.npm-packages/bin:/Users/abdallahkanso/.linuxbrew/bin:/Users/abdallahkanso/.sdkman/candidates/springboot/current/bin:/Users/abdallahkanso/.sdkman/candidates/groovy/current/bin:/Users/abdallahkanso/.sdkman/candidates/gradle/current/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Development/maven/bin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
+
+Yarn version: 
+  1.2.1
+
+Node version: 
+  8.9.0
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "node-todo-api",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+      "start": "node server/server.js",
+      "test": "export NODE_ENV=test || SET NODE_ENV=test && mocha server/**/*.test.js",
+      "test-watch": "nodemon --exec 'npm test'"
+    },
+    "engines": {
+      "node": "8.9.0"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+      "bcryptjs": "^2.3.0",
+      "body-parser": "^1.15.2",
+      "crypto-js": "^3.1.6",
+      "express": "^4.14.0",
+      "jsonwebtoken": "^7.1.9",
+      "lodash": "^4.15.0",
+      "mongodb": "^2.2.5",
+      "mongoose": "^4.5.9",
+      "validator": "^5.6.0"
+    },
+    "devDependencies": {
+      "expect": "^21.1.0",
+      "mocha": "^3.0.2",
+      "nodemon": "^1.10.2",
+      "supertest": "^2.0.0"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: EACCES: permission denied, mkdir '/Users/abdallahkanso/Library/Caches/Yarn/v1/npm-statuses-1.4.0-bb73d446da2796106efcc1b601a253d6c46bd087'
