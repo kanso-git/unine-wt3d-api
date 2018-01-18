@@ -1,7 +1,6 @@
 node_modules/
-server/config/config.json
+server/config/*.json
 yarn-error.log
-
 
 # User-specific stuff:
 .idea/**/workspace.xml

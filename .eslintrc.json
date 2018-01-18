@@ -1,0 +1,16 @@
+{
+    "extends": "nodejs",
+    "plugins": [
+        "import"
+    ],
+    "rules": {
+        "comma-dangle": "error",
+        "indent": ["error", 2],
+        "no-cond-assign": ["error", "always"],
+        "one-var": "off", 
+        "init-declarations": "off",
+        "no-console": "off",
+        "no-inline-comments": "off",
+        "strict":"off"
+    }
+  }
