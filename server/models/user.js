@@ -10,8 +10,6 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: false,
     trim: true,
-    minlength: 1,
-    unique: true,
     validate: {
       validator: value => {
         if (value) validator.isEmail(value);
@@ -57,7 +55,7 @@ UserSchema.methods.toJSON = function() {
   const user = this;
   const userObject = user.toObject();
 
-  return _.pick(userObject, ['_id', 'email']);
+  return _.pick(userObject, ['_id', 'username']);
 };
 
 UserSchema.methods.generateAuthToken = function() {
