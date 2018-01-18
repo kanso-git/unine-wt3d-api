@@ -36,7 +36,6 @@ const auth = (username, password) => new Promise((resolve, reject) => {
       if (err) {
         reject(err);
       }
-      // console.log(`ldap user is ok ${JSON.stringify(user, null, 5)}`);
       resolve(user);
     });
   } catch (e) {
