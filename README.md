@@ -2,5 +2,16 @@
 
 # todos  
 
-1 - complete the user modules
-2 - add the unit tests 
+1 - add the Wt3d model and finalize the CRUD opreations 
+
+2 - split routing by module - check-up express docs
+
+3 - complete the user modules
+
+4 - add the unit tests 
+
+
+# extra 
+
+- login screen sample (https://github.com/cornflourblue/react-redux-registration-login-example/tree/master/src
+
