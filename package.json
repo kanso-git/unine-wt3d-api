@@ -9,10 +9,10 @@
     "test": "export NODE_ENV=test || SET NODE_ENV=test && mocha server/**/*.test.js",
     "test-watch": "nodemon --exec 'npm test'"
   },
- 
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "activedirectory": "^0.7.2",
     "axios": "^0.17.1",
     "bcryptjs": "^2.3.0",
     "body-parser": "^1.15.2",

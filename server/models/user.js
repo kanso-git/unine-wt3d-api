@@ -3,10 +3,10 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
-const { auth } = require('./ldap');
+const { auth, findUsers, findUser } = require('./ldap');
 
 const UserSchema = new mongoose.Schema({
-  email: {
+  mail: {
     type: String,
     required: false,
     trim: true,
@@ -48,6 +48,12 @@ const UserSchema = new mongoose.Schema({
     type: String,
     enum: ['ldap', 'ext'],
     default: 'ldap'
+  },
+  displayName: {
+    type: String
+  },
+  title: {
+    type: String
   }
 });
 
@@ -55,7 +61,7 @@ UserSchema.methods.toJSON = function() {
   const user = this;
   const userObject = user.toObject();
 
-  return _.pick(userObject, ['_id', 'username']);
+  return _.pick(userObject, ['_id', 'username', 'type', 'role', 'mail', 'displayName', 'title']);
 };
 
 UserSchema.methods.generateAuthToken = function() {
@@ -96,6 +102,23 @@ UserSchema.statics.findByToken = function(token) {
   });
 };
 
+UserSchema.statics.searchUsersInAD = function(query, match) {
+  if (query.length < 3) {
+    return Promise.reject({error: ' query length is less than 3 '});
+  } else return findUsers(query, match)
+    .then(list => Promise.resolve(list))
+    .catch(e => Promise.reject(e));
+};
+
+UserSchema.statics.searchUserInAD = function(username) {
+  if (username.length < 3) {
+    return Promise.reject({error: ' username length is less than 3 '});
+  } else return findUser(username)
+    .then(user => Promise.resolve(user))
+    .catch(e => Promise.reject(e));
+};
+
+
 UserSchema.statics.findByCredentials = function(username, password) {
   const User = this;
 
@@ -108,6 +131,12 @@ UserSchema.statics.findByCredentials = function(username, password) {
       return auth(username, password)
         .then(ldapUser => {
           console.log('ldap user && pass are ok ');
+
+          // enrich user data
+          user.mail = ldapUser.mail;
+          user.displayName = ldapUser.displayName;
+          user.title = ldapUser.title;
+
           return Promise.resolve(user);
         }
         ).catch(e => {
