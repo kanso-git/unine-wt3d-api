@@ -12,6 +12,8 @@
 
 5 - create a route to group all the bdl api 
 
+6 - user model 
+
 # extra 
 
 - login screen sample (https://github.com/cornflourblue/react-redux-registration-login-example/tree/master/src
