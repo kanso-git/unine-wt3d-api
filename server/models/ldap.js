@@ -31,22 +31,25 @@ const activeDirectory = new ActiveDirectory({
   'password': process.env.LDAP_BIND_CREDENTIALS
 });
 
+/*
 ldap.on('error', err => {
-  console.error('LdapAuth: ', err);
+  console.error('ldap.js line 36 error: ', err);
 });
-
+*/
 const auth = (username, password) => new Promise((resolve, reject) => {
   if (!password || !username) {
     reject({error: 'username or password are not provided '});
   }
   try {
     ldap.authenticate(username, password, (err, user) => {
+      ldap.close();
       if (err) {
         reject(err);
       }
       resolve(user);
     });
   } catch (e) {
+    ldap.close();
     reject(e);
   }
 });

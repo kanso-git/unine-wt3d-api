@@ -11,7 +11,7 @@ const LocationSchema = new mongoose.Schema({
     require: true,
     unique: true
   },
-  displayName: {
+  displayNameOnWT: {
     type: String,
     require: false,
     minlength: 6
@@ -41,6 +41,21 @@ const LocationSchema = new mongoose.Schema({
     type: String,
     enum: ['active', 'inactive'],
     default: 'active'
+  },
+  updateDate: {
+    type: Number,
+    default: null
+  },
+  _editor: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: false
+  }, creationDate: {
+    type: Number,
+    default: null
+  },
+  _creator: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: false
   }
 });
 

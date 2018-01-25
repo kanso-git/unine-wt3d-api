@@ -65,12 +65,13 @@ const localTypes = [{
   refId: -1
 }];
 
-exports.populate_localType_data = async(req, res) => {
+exports.populate_data = async(req, res) => {
   try {
     await LocalType.remove({});
     await LocalType.insertMany(localTypes);
-    const data = await LocalType.find({});
-    res.send({data});
+    const dataLocalTypes = await LocalType.find({});
+    
+    res.send({dataLocalTypes});
   } catch (e) {
     res.status(400).send(e);
   }
